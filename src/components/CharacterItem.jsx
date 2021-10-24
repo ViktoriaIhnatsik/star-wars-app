@@ -16,36 +16,15 @@ export default function CharacterItem({character}) {
          Detail info
        </button>
        {detailInfo && (
-         <table>
-           <tr>
-             <th>Height</th>
-             <td>{character.height}</td>
-           </tr>
-           <tr>
-             <th>Mass</th>
-             <td>{character.mass}</td>
-           </tr>
-           <tr>
-             <th>Hair Color</th>
-             <td>{character.hair_color}</td>
-           </tr>
-           <tr>
-             <th>Skin Color</th>
-             <td>{character.skin_color}</td>
-           </tr>
-           <tr>
-             <th>Eye Color</th>
-             <td>{character.eye_color}</td>
-           </tr>
-           <tr>
-             <th>Birth year</th>
-             <td>{character.birth_year}</td>
-           </tr>
-           <tr>
-             <th>Gender</th>
-             <td>{character.gender}</td>
-           </tr>
-         </table>
+         <ul>
+           <li>Height: {character.height} </li>
+           <li>Mass: {character.mass}</li>
+           <li>Hair Color: {character.hair_color}</li>
+           <li>Skin Color: {character.skin_color} </li>
+           <li>Eye Color: {character.eye_color}</li>
+           <li>Birth year: {character.birth_year}</li>
+           <li>Gender: {character.gender}</li>
+         </ul>
        )}
      </div>
    </div>
