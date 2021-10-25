@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import CharacterItem from '../components/CharacterItem'
+import "../App.css";
 
 export default function CharactersListPage() {
  const [charactersList, setCharactersList] = useState([]);
  const [searchInput, setSearchInput] = useState("");
  const [filteredResults, setFilteredResults] = useState([]);
 
+ 
   useEffect( () => {
-    const url = "https://swapi.dev/api/people/";
+    let page = 1;
+    const url = `https://swapi.dev/api/people/?page=${page}`;
     fetch(url)
     .then(res => res.json())
     .then(data => setCharactersList(data.results))
@@ -32,9 +35,7 @@ export default function CharactersListPage() {
 
  return (
    <div className="container pt-5 pb-5">
-     <h1>Characters List Page</h1>
-
-     <input
+     <input className="searchInput"
        type="search"
        value={searchInput}
        placeholder="Search character"
@@ -44,12 +45,12 @@ export default function CharactersListPage() {
 
      {!charactersList && <p>Loading...</p>}
 
-     <div className="row">
-       {searchInput.length > 1 
-       ? filteredResults &&
+     <div className="row ">
+       {searchInput.length > 1
+         ? filteredResults &&
            Object.entries(filteredResults).map((item) => {
-              const key = item[0];
-              const value = item[1];
+             const key = item[0];
+             const value = item[1];
              return <CharacterItem key={key} character={value} />;
            })
          : charactersList &&

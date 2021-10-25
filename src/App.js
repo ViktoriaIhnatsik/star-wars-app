@@ -1,11 +1,12 @@
 import React from 'react';
+import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import CharactersListPage from './pages/CharactersListPage'
 
 function App() {
   return (
-    <div className="container"> 
-      <h1>Star Wars characters</h1>
+    <div className="container text-center m-5"> 
+      <h1>Star Wars Characters</h1>
       
       <Switch> 
 

@@ -9,22 +9,25 @@ export default function CharacterItem({character}) {
   };
 
  return (
-   <div className="col-md-4 shadow p-3">
+   <div className="col-md-4  p-3 fs-3" >
      {character.name}
      <div>
-       <button className="btn btn-secondary btn-block" onClick={handleOnClick}>
+       <button
+         className="btn btn-outline-secondary btn-sm m-2"
+         onClick={handleOnClick}
+       >
          Detail info
        </button>
        {detailInfo && (
-         <ul>
-           <li>Height: {character.height} </li>
-           <li>Mass: {character.mass}</li>
-           <li>Hair Color: {character.hair_color}</li>
-           <li>Skin Color: {character.skin_color} </li>
-           <li>Eye Color: {character.eye_color}</li>
-           <li>Birth year: {character.birth_year}</li>
-           <li>Gender: {character.gender}</li>
-         </ul>
+         <div className="fs-6 ">
+             <p>Height: {character.height} </p>
+             <p>Mass: {character.mass}</p>
+             <p>Hair Color: {character.hair_color}</p>
+             <p>Skin Color: {character.skin_color}</p>
+             <p>Color: {character.eye_color}</p>
+             <p>Birth year: {character.birth_year}</p>
+             <p>Gender: {character.gender}</p>
+         </div>
        )}
      </div>
    </div>

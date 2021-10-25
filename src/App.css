@@ -1,0 +1,19 @@
+body {
+  background-image: url("https://i.pinimg.com/originals/ea/1d/97/ea1d9797c9bf3dda7a23b238e5e4b364.jpg");
+  height: 100vh;
+  background-size: 100%;
+  background-repeat: repeat;
+  color: #fff;
+  font-family:  Helvetica, Arial, sans-serif;
+  font-weight: 100;
+}
+
+.searchInput {
+  border: 2px solid #A7A7A9  ;
+  width: 30%;
+  margin-bottom: 25px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: rgba(34, 36, 64, 0.3);
+  color: #fff;
+}
