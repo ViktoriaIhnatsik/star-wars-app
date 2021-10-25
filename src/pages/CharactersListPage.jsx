@@ -1,4 +1,3 @@
-/* eslint-disable no-loop-func */
 import React, { useEffect, useState } from "react";
 import CharacterItem from "../components/CharacterItem";
 import "../App.css";
@@ -12,12 +11,12 @@ export default function CharactersListPage() {
     fetchAllCharacters();
   }, []);
 
-
   const fetchAllCharacters = async () => {
     let allCharacters = [];
     let page = 1;
     let next = null;
     do {
+      try {
         let url = `https://swapi.dev/api/people/?page=${page}`;
         await fetch(url)
           .then((res) => res.json())
@@ -28,12 +27,13 @@ export default function CharactersListPage() {
             });
           });
         page++;
-      } 
-      while (next !== null) 
-      setCharactersList(allCharacters);
-  }
-  
-    
+      } catch (error) {
+        console.log(error);
+      }
+    } while (next !== null);
+    setCharactersList(allCharacters);
+  };
+
   const searchItems = (e) => {
     setSearchInput(e.target.value);
     if (searchInput !== "") {
