@@ -22,11 +22,8 @@ export default function CharacterItem({character}) {
          <div className="fs-6 ">
              <p>Height: {character.height} </p>
              <p>Mass: {character.mass}</p>
-             <p>Hair Color: {character.hair_color}</p>
-             <p>Skin Color: {character.skin_color}</p>
              <p>Color: {character.eye_color}</p>
              <p>Birth year: {character.birth_year}</p>
-             <p>Gender: {character.gender}</p>
          </div>
        )}
      </div>
