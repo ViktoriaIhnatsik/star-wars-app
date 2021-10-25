@@ -1,22 +1,39 @@
-import React, {useEffect, useState} from 'react'
-import CharacterItem from '../components/CharacterItem'
+/* eslint-disable no-loop-func */
+import React, { useEffect, useState } from "react";
+import CharacterItem from "../components/CharacterItem";
 import "../App.css";
 
 export default function CharactersListPage() {
- const [charactersList, setCharactersList] = useState([]);
- const [searchInput, setSearchInput] = useState("");
- const [filteredResults, setFilteredResults] = useState([]);
+  const [charactersList, setCharactersList] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredResults, setFilteredResults] = useState([]);
 
- 
-  useEffect( () => {
+  useEffect(() => {
+    fetchAllCharacters();
+  }, []);
+
+
+  const fetchAllCharacters = async () => {
+    let allCharacters = [];
     let page = 1;
-    const url = `https://swapi.dev/api/people/?page=${page}`;
-    fetch(url)
-    .then(res => res.json())
-    .then(data => setCharactersList(data.results))
-  }, [] )
-
-
+    let next = null;
+    do {
+        let url = `https://swapi.dev/api/people/?page=${page}`;
+        await fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+            next = data.next;
+            data.results.forEach((character) => {
+              allCharacters.push(character);
+            });
+          });
+        page++;
+      } 
+      while (next !== null) 
+      setCharactersList(allCharacters);
+  }
+  
+    
   const searchItems = (e) => {
     setSearchInput(e.target.value);
     if (searchInput !== "") {
@@ -31,36 +48,35 @@ export default function CharactersListPage() {
       setFilteredResults(charactersList);
     }
   };
-  
 
- return (
-   <div className="container pt-5 pb-5">
-     <input className="searchInput"
-       type="search"
-       value={searchInput}
-       placeholder="Search character"
-       name="search"
-       onChange={searchItems}
-     />
+  return (
+    <div className="container pt-5 pb-5">
+      <input
+        className="searchInput"
+        type="search"
+        value={searchInput}
+        placeholder="Search character"
+        name="search"
+        onChange={searchItems}
+      />
 
-     {!charactersList && <p>Loading...</p>}
+      {!charactersList && <p>Loading...</p>}
 
-     <div className="row ">
-       {searchInput.length > 1
-         ? filteredResults &&
-           Object.entries(filteredResults).map((item) => {
-             const key = item[0];
-             const value = item[1];
-             return <CharacterItem key={key} character={value} />;
-           })
-         : charactersList &&
-           Object.entries(charactersList).map((characterItem) => {
-             const key = characterItem[0];
-             const value = characterItem[1];
-             console.log(key);
-             return <CharacterItem key={key} character={value} />;
-           })}
-     </div>
-   </div>
- );
+      <div className="row ">
+        {searchInput.length > 1
+          ? filteredResults &&
+            Object.entries(filteredResults).map((item) => {
+              const key = item[0];
+              const value = item[1];
+              return <CharacterItem key={key} character={value} />;
+            })
+          : charactersList &&
+            Object.entries(charactersList).map((characterItem) => {
+              const key = characterItem[0];
+              const value = characterItem[1];
+              return <CharacterItem key={key} character={value} />;
+            })}
+      </div>
+    </div>
+  );
 }
