@@ -1,8 +1,10 @@
 body {
   background-image: url("https://i.pinimg.com/originals/ea/1d/97/ea1d9797c9bf3dda7a23b238e5e4b364.jpg");
-  height: 100vh;
-  background-size: 100%;
-  background-repeat: repeat;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #212121;
   color: #fff;
   font-family:  Helvetica, Arial, sans-serif;
   font-weight: 100;
