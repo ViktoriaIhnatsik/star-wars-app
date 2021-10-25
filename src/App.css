@@ -19,3 +19,14 @@ body {
   background-color: rgba(34, 36, 64, 0.3);
   color: #fff;
 }
+
+@media screen and (max-width: 770px) {
+  .container {
+    text-align: center;
+  }
+  .searchInput{
+    width: 80%;
+  }
+
+
+}
