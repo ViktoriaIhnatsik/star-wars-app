@@ -6,12 +6,14 @@ export default function CharactersListPage() {
   const [charactersList, setCharactersList] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchAllCharacters();
   }, []);
 
   const fetchAllCharacters = async () => {
+    setLoading(true);
     let allCharacters = [];
     let page = 1;
     let next = null;
@@ -32,6 +34,7 @@ export default function CharactersListPage() {
       }
     } while (next !== null);
     setCharactersList(allCharacters);
+    setLoading(false);
   };
 
   const searchItems = (e) => {
@@ -60,7 +63,7 @@ export default function CharactersListPage() {
         onChange={searchItems}
       />
 
-      {!charactersList && <p>Loading...</p>}
+      {loading && <p>Loading...</p>}
 
       <div className="row ">
         {searchInput.length > 1
