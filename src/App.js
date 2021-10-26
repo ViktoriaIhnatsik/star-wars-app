@@ -5,7 +5,7 @@ import CharactersListPage from './pages/CharactersListPage'
 
 function App() {
   return (
-    <div className="container text-center m-5"> 
+    <div className="container text-center"> 
       <h1>Star Wars Characters</h1>
       
       <Switch> 
