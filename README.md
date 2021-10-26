@@ -1,5 +1,5 @@
 # star-wars-app
-:link:  https://star-wars-app-swapi.herokuapp.com/
+:link: https://sw-app.herokuapp.com/
 
 **Star Wars App**
 
